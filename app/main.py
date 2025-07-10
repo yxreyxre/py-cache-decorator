@@ -1,8 +1,10 @@
 from typing import Callable
 from typing import Any
-saved_cache = {}
+
 
 def cache(func: Callable) -> Callable:
+    saved_cache = {}
+
     def inner(*args) -> Any:
         key = args
         if key not in saved_cache:
@@ -14,4 +16,3 @@ def cache(func: Callable) -> Callable:
             print("Getting from cache")
             return saved_cache[key]
     return inner
-
